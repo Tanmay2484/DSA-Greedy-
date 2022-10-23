@@ -1,6 +1,7 @@
 /* N meetings in one room
    GFG Link : https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
    it is known as activity selection problem  
+   time comp : O(nlogn) ans space comp : O(n) for the vector
 */
 static bool compare(pair<int,int>a,pair<int,int>b){ // did static because every time we have to give me a compare every time so thats why we are doing this things 
         return  a.second < b.second;
