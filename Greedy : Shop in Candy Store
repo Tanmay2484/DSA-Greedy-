@@ -1,0 +1,31 @@
+/* Shop in Candy Store
+  Link : https://practice.geeksforgeeks.org/problems/shop-in-candy-store1145/1
+ 
+*/
+vector<int> candyStore(int candies[], int N, int K)
+    {
+        //so at first we have to do  sort then as per condition we will take by greedy method
+        sort(candies,candies+N);
+        // no by using greedy method at first find the min amount of money 
+        // so we will buy min price of candy and will get maximum price candy free k times
+        // we will buy min price from first from the array then free take last from the array
+        int min=0;
+        int buy=0,freecan=N-1;
+        while(buy<=freecan){
+            min+=candies[buy];// so to buy min price candy and get maximum price candy free 
+            buy++;              // we are taking from sorted array frist elements and free from last elements
+            freecan-=K;
+        }
+        
+        int maxi=0;
+        buy=N-1,freecan=0;
+        while(freecan<=buy){
+            maxi+=candies[buy];// here is is just opposite 
+            buy--;
+            freecan+=K;
+        }
+        vector<int>v;
+        v.push_back(min);
+        v.push_back(maxi);
+        return v;
+    }
