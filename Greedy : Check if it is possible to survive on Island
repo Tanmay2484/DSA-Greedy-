@@ -1,0 +1,17 @@
+/* Check if it is possible to survive on Island
+  Link : https://practice.geeksforgeeks.org/problems/check-if-it-is-possible-to-survive-on-island4922/1
+*/
+int minimumDays(int S, int N, int M){
+        int  noOfSundays=S/7;// finding the number of sundays because we can't buy in the sundays 
+        int buyingDays=S-noOfSundays;//those days we can buy
+        int totalFood=S*M,ans=0;// total food required (total days to survive * Every days to eat)
+        if(totalFood%N==0)  // checking that N foods can buy in a day max 
+            ans=totalFood/N; // so if totalfood directly divided by N then we will get the direct ans
+        else
+            ans=totalFood/N+1;// if total food is 20 and N is 16 then (20%16!=0) and (20/16=1) 
+                            // so totalfood/N+1 we are doing because of the decimals numbers to calculate 
+        if(ans<=buyingDays) // if N=1,S=10,M=1 then we cant survive in sundays so where we can compare that
+            return ans;
+            
+       return -1;// -1 because if the conditions are not possible 
+    }
