@@ -1,0 +1,18 @@
+/* 1431. Kids With the Greatest Number of Candies
+  Link: https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/
+*/
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int n=candies.size();
+        vector<int>temp;temp=candies;
+        sort(temp.begin(),temp.end());
+        vector<bool>v(n,false);
+        for(int i=0;i<n;i++){
+            if(candies[i]+extraCandies>=temp[n-1]){
+                v[i]=true;
+            }
+        }
+        return v;
+    }
+};
