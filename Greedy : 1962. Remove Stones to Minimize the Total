@@ -1,0 +1,22 @@
+/* 1962. Remove Stones to Minimize the Total
+   Link : https://leetcode.com/problems/remove-stones-to-minimize-the-total/description/
+*/
+class Solution {
+public:
+    int minStoneSum(vector<int>& piles, int k) {
+        int sum = accumulate(begin(piles), end(piles), 0);
+        priority_queue<int> pq(begin(piles), end(piles)); 
+        
+        while(!pq.empty() && k--) { 
+            int curr = pq.top();
+            pq.pop();
+            
+            sum     -= floor(curr/2);
+            curr    -= floor(curr/2);
+            
+            pq.push(curr);
+        }
+        //time comp nlogn
+        return sum;
+    }
+};
