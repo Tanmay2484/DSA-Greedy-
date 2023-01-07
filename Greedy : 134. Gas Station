@@ -1,0 +1,23 @@
+/* 134. Gas Station
+   Link: https://leetcode.com/problems/gas-station/description/
+*/
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int sum_of_gas=0,sum_of_cost=0;
+        for(int i=0;i<gas.size();i++) sum_of_gas+=gas[i];
+        for(int i=0;i<cost.size();i++) sum_of_cost+=cost[i];
+
+        if(sum_of_gas<sum_of_cost) return -1;// because the cost will high
+        // so if the above cond is not matching then on soln is there 
+        int total=0,start_loop_index=0;
+        for(int i=0;i<gas.size();i++){
+            total+=(gas[i]-cost[i]);
+            if(total<0){
+                total=0;//we are greedy thats why changing the value again to zero
+                start_loop_index=i+1;//i+1 because total<0 will be before starting loop index 
+            }
+        } cout<<sum_of_gas<<" "<<sum_of_cost;
+        return start_loop_index;
+    }
+};
